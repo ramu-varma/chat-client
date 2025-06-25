@@ -1,0 +1,25 @@
+
+services:
+  - type: web
+    name: mern-chat-backend
+    env: node
+    plan: free
+    buildCommand: cd server && yarn install
+    startCommand: cd server && node server.js
+    envVars:
+      - key: MONGO_URI
+        value: "mongodb+srv://ramuvarma:3x7fiuM4W6G3vnFC@namastenodejs.j0wv3.mongodb.net/Chat"
+      - key: JWT_SECRET
+        value: Ramu@123Varma@123D1V32@M
+    autoDeploy: true
+
+  - type: web
+    name: mern-chat-frontend
+    env: static
+    plan: free
+    buildCommand: cd client && yarn install && yarn build
+    staticPublishPath: client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://mern-chat-backend.onrender.com
+    autoDeploy: true
