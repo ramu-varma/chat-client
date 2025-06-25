@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/user');
 const { signupSchema, loginSchema } = require('../validator/authValidator');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'ramu_secret';
